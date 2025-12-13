@@ -1,1 +1,33 @@
 @import 'tailwindcss';
+
+@theme {
+  /* Primary Colors */
+  --color-primary: #00CB46;
+  --color-primary-dark: #00B33E;
+
+  /* Custom Animations */
+  --animate-fade-slide: fade-slide 0.3s ease-out;
+  --animate-scale-in: scale-in 0.4s ease-out;
+
+  @keyframes fade-slide {
+    0% {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
