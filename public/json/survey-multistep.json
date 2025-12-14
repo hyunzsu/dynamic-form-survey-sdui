@@ -1,0 +1,358 @@
+{
+  "body": {
+    "style": {
+      "default": {
+        "base": {
+          "backgroundColor": "#f9fafb",
+          "minHeight": "100dvh",
+          "padding": "24px"
+        }
+      }
+    },
+    "items": {
+      "header": [
+        {
+          "id": "header",
+          "role": "container",
+          "className": "mb-8",
+          "children": [
+            {
+              "id": "header-title",
+              "type": "h1",
+              "role": "text",
+              "content": "2024년 직원 만족도 조사",
+              "className": "text-2xl font-bold text-gray-900"
+            },
+            {
+              "id": "header-desc",
+              "type": "p",
+              "role": "text",
+              "content": "더 나은 근무 환경을 만들기 위해 여러분의 소중한 의견을 들려주세요.",
+              "className": "text-gray-500 mt-2"
+            }
+          ]
+        }
+      ],
+      "stepIndicator": [
+        {
+          "id": "step-indicator",
+          "role": "stepIndicator",
+          "totalSteps": 3,
+          "labels": ["기본 정보", "만족도 평가", "개선 사항"]
+        }
+      ],
+      "survey": [
+        {
+          "id": "employee-satisfaction-2024",
+          "role": "surveyForm",
+          "totalSteps": 3,
+          "children": [
+            {
+              "id": "section-basic",
+              "role": "container",
+              "formStep": 0,
+              "children": [
+                {
+                  "id": "section-basic-header",
+                  "role": "container",
+                  "className": "mb-6",
+                  "children": [
+                    {
+                      "id": "section-basic-title",
+                      "type": "h2",
+                      "role": "text",
+                      "content": "기본 정보",
+                      "className": "text-lg font-semibold text-gray-900"
+                    },
+                    {
+                      "id": "section-basic-desc",
+                      "type": "p",
+                      "role": "text",
+                      "content": "응답자의 기본 정보를 선택해주세요.",
+                      "className": "text-sm text-gray-500 mt-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "department",
+                  "name": "department",
+                  "role": "singleChoice",
+                  "title": "소속 부서를 선택해주세요",
+                  "required": true,
+                  "validation": {
+                    "type": "string",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "소속 부서를 선택해주세요"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "dept-dev",
+                      "role": "option",
+                      "value": "development",
+                      "label": "개발팀"
+                    },
+                    {
+                      "id": "dept-design",
+                      "role": "option",
+                      "value": "design",
+                      "label": "디자인팀"
+                    },
+                    {
+                      "id": "dept-product",
+                      "role": "option",
+                      "value": "product",
+                      "label": "기획팀"
+                    },
+                    {
+                      "id": "dept-marketing",
+                      "role": "option",
+                      "value": "marketing",
+                      "label": "마케팅팀"
+                    },
+                    {
+                      "id": "dept-hr",
+                      "role": "option",
+                      "value": "hr",
+                      "label": "인사팀"
+                    }
+                  ]
+                },
+                {
+                  "id": "tenure",
+                  "name": "tenure",
+                  "role": "singleChoice",
+                  "title": "근속 기간을 선택해주세요",
+                  "required": true,
+                  "validation": {
+                    "type": "string",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "근속 기간을 선택해주세요"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "tenure-1",
+                      "role": "option",
+                      "value": "under1",
+                      "label": "1년 미만"
+                    },
+                    {
+                      "id": "tenure-2",
+                      "role": "option",
+                      "value": "1to3",
+                      "label": "1~3년"
+                    },
+                    {
+                      "id": "tenure-3",
+                      "role": "option",
+                      "value": "3to5",
+                      "label": "3~5년"
+                    },
+                    {
+                      "id": "tenure-4",
+                      "role": "option",
+                      "value": "over5",
+                      "label": "5년 이상"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "section-satisfaction",
+              "role": "container",
+              "formStep": 1,
+              "children": [
+                {
+                  "id": "section-satisfaction-header",
+                  "role": "container",
+                  "className": "mb-6",
+                  "children": [
+                    {
+                      "id": "section-satisfaction-title",
+                      "type": "h2",
+                      "role": "text",
+                      "content": "만족도 평가",
+                      "className": "text-lg font-semibold text-gray-900"
+                    },
+                    {
+                      "id": "section-satisfaction-desc",
+                      "type": "p",
+                      "role": "text",
+                      "content": "각 항목에 대한 만족도를 평가해주세요.",
+                      "className": "text-sm text-gray-500 mt-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "work-life-balance",
+                  "name": "work-life-balance",
+                  "role": "rating",
+                  "title": "업무와 개인 생활의 균형에 대해 어떻게 생각하시나요?",
+                  "description": "1점: 매우 불만족 ~ 5점: 매우 만족",
+                  "required": true,
+                  "validation": {
+                    "type": "number",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "만족도를 선택해주세요"
+                    }
+                  },
+                  "maxRating": 5
+                },
+                {
+                  "id": "team-communication",
+                  "name": "team-communication",
+                  "role": "rating",
+                  "title": "팀 내 소통과 협업에 대해 어떻게 생각하시나요?",
+                  "description": "1점: 매우 불만족 ~ 5점: 매우 만족",
+                  "required": true,
+                  "validation": {
+                    "type": "number",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "만족도를 선택해주세요"
+                    }
+                  },
+                  "maxRating": 5
+                },
+                {
+                  "id": "growth-opportunity",
+                  "name": "growth-opportunity",
+                  "role": "rating",
+                  "title": "개인의 성장과 발전 기회에 대해 어떻게 생각하시나요?",
+                  "description": "1점: 매우 불만족 ~ 5점: 매우 만족",
+                  "required": true,
+                  "validation": {
+                    "type": "number",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "만족도를 선택해주세요"
+                    }
+                  },
+                  "maxRating": 5
+                }
+              ]
+            },
+            {
+              "id": "section-improvement",
+              "role": "container",
+              "formStep": 2,
+              "children": [
+                {
+                  "id": "section-improvement-header",
+                  "role": "container",
+                  "className": "mb-6",
+                  "children": [
+                    {
+                      "id": "section-improvement-title",
+                      "type": "h2",
+                      "role": "text",
+                      "content": "개선 사항",
+                      "className": "text-lg font-semibold text-gray-900"
+                    },
+                    {
+                      "id": "section-improvement-desc",
+                      "type": "p",
+                      "role": "text",
+                      "content": "각 항목에 대해 개선이 필요하다고 생각되는 영역을 선택해주세요.",
+                      "className": "text-sm text-gray-500 mt-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "improvement-areas",
+                  "name": "improvement-areas",
+                  "role": "multipleChoice",
+                  "title": "개선이 필요하다고 생각되는 영역을 선택해주세요",
+                  "description": "복수 선택 가능합니다.",
+                  "children": [
+                    {
+                      "id": "imp-salary",
+                      "role": "option",
+                      "value": "salary",
+                      "label": "급여 및 복지"
+                    },
+                    {
+                      "id": "imp-culture",
+                      "role": "option",
+                      "value": "culture",
+                      "label": "조직 문화"
+                    },
+                    {
+                      "id": "imp-equipment",
+                      "role": "option",
+                      "value": "equipment",
+                      "label": "업무 환경/장비"
+                    },
+                    {
+                      "id": "imp-education",
+                      "role": "option",
+                      "value": "education",
+                      "label": "교육/성장 기회"
+                    },
+                    {
+                      "id": "imp-communication",
+                      "role": "option",
+                      "value": "communication",
+                      "label": "소통 체계"
+                    }
+                  ]
+                },
+                {
+                  "id": "feedback",
+                  "name": "feedback",
+                  "role": "textInput",
+                  "title": "기타 의견이 있으시면 자유롭게 작성해주세요",
+                  "placeholder": "회사에 바라는 점, 개선 아이디어 등을 입력해주세요...",
+                  "multiline": true,
+                  "rows": 4
+                }
+              ]
+            },
+            {
+              "id": "button-container",
+              "role": "container",
+              "className": "flex justify-between mt-8 gap-2",
+              "children": [
+                {
+                  "id": "prev-btn",
+                  "role": "button",
+                  "label": "이전",
+                  "className": "secondary flex-1",
+                  "event": {
+                    "type": "onClick",
+                    "handler": "goPrevStep"
+                  }
+                },
+                {
+                  "id": "next-btn",
+                  "role": "button",
+                  "label": "다음",
+                  "className": "flex-1",
+                  "event": {
+                    "type": "onClick",
+                    "handler": "goNextStep"
+                  }
+                },
+                {
+                  "id": "submit-btn",
+                  "role": "button",
+                  "label": "설문 제출하기",
+                  "className": "flex-1",
+                  "event": {
+                    "type": "onClick",
+                    "handler": "submit"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
