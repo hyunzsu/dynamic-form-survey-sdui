@@ -1,0 +1,155 @@
+{
+  "body": {
+    "style": {
+      "default": {
+        "base": {
+          "backgroundColor": "#f9fafb",
+          "minHeight": "100dvh",
+          "padding": "24px"
+        }
+      }
+    },
+    "items": {
+      "header": [
+        {
+          "id": "header",
+          "role": "container",
+          "className": "mb-8",
+          "children": [
+            {
+              "id": "header-title",
+              "type": "h1",
+              "role": "text",
+              "content": "고객 피드백 설문",
+              "className": "text-2xl font-bold text-gray-900"
+            },
+            {
+              "id": "header-desc",
+              "type": "p",
+              "role": "text",
+              "content": "서비스 개선을 위해 소중한 의견을 들려주세요.",
+              "className": "text-gray-500 mt-2"
+            }
+          ]
+        }
+      ],
+      "survey": [
+        {
+          "id": "feedback-survey",
+          "role": "surveyForm",
+          "children": [
+            {
+              "id": "progress",
+              "role": "progressBar",
+              "showPercentage": true,
+              "showCount": true,
+              "sticky": "top"
+            },
+            {
+              "id": "satisfaction",
+              "name": "satisfaction",
+              "role": "rating",
+              "title": "전반적인 서비스 만족도는 어떠신가요?",
+              "description": "1점: 매우 불만족 ~ 5점: 매우 만족",
+              "required": true,
+              "validation": {
+                "type": "number",
+                "required": true,
+                "errorMessages": {
+                  "required": "만족도를 선택해주세요"
+                }
+              },
+              "maxRating": 5
+            },
+            {
+              "id": "recommend",
+              "name": "recommend",
+              "role": "singleChoice",
+              "title": "이 서비스를 다른 사람에게 추천하시겠습니까?",
+              "required": true,
+              "validation": {
+                "type": "string",
+                "required": true,
+                "errorMessages": {
+                  "required": "항목을 선택해주세요"
+                }
+              },
+              "children": [
+                {
+                  "id": "rec-yes",
+                  "role": "option",
+                  "value": "yes",
+                  "label": "예, 추천합니다"
+                },
+                {
+                  "id": "rec-maybe",
+                  "role": "option",
+                  "value": "maybe",
+                  "label": "잘 모르겠습니다"
+                },
+                {
+                  "id": "rec-no",
+                  "role": "option",
+                  "value": "no",
+                  "label": "아니요, 추천하지 않습니다"
+                }
+              ]
+            },
+            {
+              "id": "features",
+              "name": "features",
+              "role": "multipleChoice",
+              "title": "가장 마음에 드는 기능을 선택해주세요",
+              "description": "복수 선택 가능합니다.",
+              "children": [
+                {
+                  "id": "feat-ui",
+                  "role": "option",
+                  "value": "ui",
+                  "label": "직관적인 UI"
+                },
+                {
+                  "id": "feat-speed",
+                  "role": "option",
+                  "value": "speed",
+                  "label": "빠른 속도"
+                },
+                {
+                  "id": "feat-support",
+                  "role": "option",
+                  "value": "support",
+                  "label": "고객 지원"
+                },
+                {
+                  "id": "feat-price",
+                  "role": "option",
+                  "value": "price",
+                  "label": "합리적인 가격"
+                }
+              ]
+            },
+            {
+              "id": "feedback",
+              "name": "feedback",
+              "role": "textInput",
+              "title": "추가 의견이 있으시면 작성해주세요",
+              "placeholder": "자유롭게 의견을 입력해주세요...",
+              "multiline": true,
+              "rows": 4
+            },
+            {
+              "id": "submit-btn",
+              "role": "button",
+              "label": "제출하기",
+              "className": "w-full",
+              "event": {
+                "type": "onClick",
+                "handler": "submit"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
