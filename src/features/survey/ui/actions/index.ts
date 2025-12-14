@@ -1,3 +1,0 @@
-// Action components
-// - SubmitButton
-// - CompletePage
