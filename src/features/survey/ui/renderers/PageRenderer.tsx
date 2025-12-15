@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, type CSSProperties } from 'react';
 import type { SurveyDocument, SurveyElement } from '../../types';
 import { ElementListRenderer } from './ElementListRenderer';
 import { ElementRenderer } from './ElementRenderer';
@@ -26,10 +26,15 @@ export function PageRenderer({
     return Object.entries(document.body.items);
   }, [document]);
 
+  // body.style.default.base 스타일 추출
+  const bodyStyle = useMemo((): CSSProperties => {
+    return document?.body?.style?.default?.base || {};
+  }, [document]);
+
   if (!pageData && !itemEntries.length) return null;
 
   return (
-    <div className={cn(className)}>
+    <div className={cn(className)} style={bodyStyle}>
       {itemEntries.map(([key, elements]) => (
         <ElementListRenderer key={key} elements={elements as SurveyElement[]} />
       ))}
