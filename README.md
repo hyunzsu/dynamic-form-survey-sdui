@@ -1,4 +1,4 @@
-# Server-Driven UI 설문 시스템
+# Server-Driven UI 동적 설문 시스템
 
 JSON으로 UI를 정의하고, React 컴포넌트로 동적 렌더링하는 설문 시스템
 
@@ -375,19 +375,3 @@ export const modifiers = {
 | 스타일링 | Tailwind CSS v4, class-variance-authority |
 
 ---
-
-## 스크립트
-
-```bash
-yarn dev      # 개발 서버 실행
-yarn build    # 프로덕션 빌드
-yarn lint     # ESLint 실행
-yarn test     # 테스트 실행
-yarn preview  # 빌드 미리보기
-```
-
----
-
-## 라이선스
-
-MIT
