@@ -17,79 +17,83 @@ function buildFieldSchema(field: SurveyFieldDefinition): z.ZodTypeAny {
   // 1) 기본 스키마 선택
   let schema = getBaseSchema(field);
 
-  // 2) 기본적으로 optional (nullable)
-  schema = schema.optional().nullable();
-
-  if (!validation) return schema;
-
-  // 3) 필수 값 검증
-  if (validation.required) {
-    schema = modifiers.required(schema, validation.errorMessages?.required);
+  if (!validation) {
+    // validation 없으면 optional/nullable로 반환
+    return schema.optional().nullable();
   }
 
-  // 4) 타입별 추가 검증
+  // 2) 타입별 추가 검증 (optional/nullable 적용 전에 수행)
   switch (validation.type) {
     case 'string':
       // 문자열 길이 검증
       if (validation.minLength !== undefined) {
-        schema = modifiers.minLength(
-          schema,
-          validation.minLength,
-          validation.errorMessages?.minLength
-        );
+        schema = (schema as z.ZodString).min(validation.minLength, {
+          message:
+            validation.errorMessages?.minLength ||
+            `최소 ${validation.minLength}자 이상 입력해주세요`,
+        });
       }
       if (validation.maxLength !== undefined) {
-        schema = modifiers.maxLength(
-          schema,
-          validation.maxLength,
-          validation.errorMessages?.maxLength
-        );
-      }
-      // 정규식 패턴
-      if (validation.pattern) {
-        schema = modifiers.pattern(
-          schema,
-          validation.pattern,
-          validation.errorMessages?.pattern
-        );
+        schema = (schema as z.ZodString).max(validation.maxLength, {
+          message:
+            validation.errorMessages?.maxLength ||
+            `최대 ${validation.maxLength}자까지 입력 가능합니다`,
+        });
       }
       break;
 
     case 'array':
       // 다중 선택 개수 검증
       if (validation.minSelect !== undefined) {
-        schema = modifiers.minSelect(
-          schema,
-          validation.minSelect,
-          validation.errorMessages?.minSelect
-        );
+        schema = (schema as z.ZodArray<z.ZodString>).min(validation.minSelect, {
+          message:
+            validation.errorMessages?.minSelect ||
+            `최소 ${validation.minSelect}개 이상 선택해주세요`,
+        });
       }
       if (validation.maxSelect !== undefined) {
-        schema = modifiers.maxSelect(
-          schema,
-          validation.maxSelect,
-          validation.errorMessages?.maxSelect
-        );
+        schema = (schema as z.ZodArray<z.ZodString>).max(validation.maxSelect, {
+          message:
+            validation.errorMessages?.maxSelect ||
+            `최대 ${validation.maxSelect}개까지 선택 가능합니다`,
+        });
       }
       break;
 
     case 'number':
       // 숫자 범위 검증 (평점)
       if (validation.min !== undefined) {
-        schema = modifiers.min(
-          schema,
-          validation.min,
-          validation.errorMessages?.min
-        );
+        schema = (schema as z.ZodNumber).min(validation.min, {
+          message:
+            validation.errorMessages?.min ||
+            `${validation.min} 이상이어야 합니다`,
+        });
       }
       if (validation.max !== undefined) {
-        schema = modifiers.max(
-          schema,
-          validation.max,
-          validation.errorMessages?.max
-        );
+        schema = (schema as z.ZodNumber).max(validation.max, {
+          message:
+            validation.errorMessages?.max ||
+            `${validation.max} 이하여야 합니다`,
+        });
       }
       break;
+  }
+
+  // 3) optional/nullable 적용
+  schema = schema.optional().nullable();
+
+  // 4) 필수 값 검증 (optional/nullable 적용 후)
+  if (validation.required) {
+    schema = modifiers.required(schema, validation.errorMessages?.required);
+  }
+
+  // 5) 정규식 패턴 검증 (refine 기반이므로 마지막에)
+  if (validation.type === 'string' && validation.pattern) {
+    schema = modifiers.pattern(
+      schema,
+      validation.pattern,
+      validation.errorMessages?.pattern
+    );
   }
 
   return schema;
