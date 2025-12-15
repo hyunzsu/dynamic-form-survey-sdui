@@ -30,13 +30,14 @@ B2B SaaS 환경에서 **고객사마다 다른 설문 요구사항**을 유연�
 
 ## 데모
 
-**싱글스텝 설문**
+랜딩 페이지에서 4가지 설문 예시를 체험할 수 있습니다.
 
-![싱글스텝 설문](./docs/images/singlestep.png)
-
-**멀티스텝 설문**
-
-![멀티스텝 설문](./docs/images/multistep.png)
+| 설문 | 설명 | 주요 기능 |
+|------|------|----------|
+| 고객 만족도 조사 | 싱글스텝 기본 설문 | 텍스트 입력, 단일/다중 선택, 평점 |
+| 사용자 경험 설문 | 3단계 멀티스텝 | 단계 표시기, 이전/다음 버튼, 진행률 |
+| 컨퍼런스 참가 신청 | 패턴 유효성 검사 | 이메일/전화번호 정규식 검증 |
+| 맞춤 서비스 설정 | 2단계 온보딩 | 최소/최대 선택 제한, 평점 라벨 |
 
 ---
 
@@ -50,19 +51,7 @@ yarn install
 yarn dev
 ```
 
-브라우저에서 `http://localhost:5173` 접속
-
-### 설문 변경하기
-
-`src/pages/SurveyRenderPage.tsx`에서 JSON 경로만 변경:
-
-```tsx
-// 싱글스텝 설문
-const { document } = useLocalJsonData('/json/survey-singlestep.json');
-
-// 멀티스텝 설문
-const { document } = useLocalJsonData('/json/survey-multistep.json');
-```
+브라우저에서 `http://localhost:5173` 접속 후 원하는 설문 선택
 
 ---
 
@@ -369,6 +358,7 @@ export const modifiers = {
 |------|------|
 | Framework | React 19, TypeScript |
 | Build | Vite 7 |
+| 라우팅 | react-router-dom v7 |
 | 폼 관리 | react-hook-form, @hookform/resolvers |
 | 유효성 검사 | Zod |
 | 상태 관리 | Jotai |
