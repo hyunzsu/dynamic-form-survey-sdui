@@ -1,0 +1,263 @@
+{
+  "body": {
+    "style": {
+      "default": {
+        "base": {
+          "backgroundColor": "#eef2ff",
+          "minHeight": "100dvh",
+          "padding": "24px"
+        }
+      }
+    },
+    "items": {
+      "header": [
+        {
+          "id": "header",
+          "role": "container",
+          "className": "mb-6 text-center",
+          "children": [
+            {
+              "id": "header-title",
+              "type": "h1",
+              "role": "text",
+              "content": "맞춤 서비스 설정",
+              "className": "text-2xl font-bold text-indigo-900"
+            },
+            {
+              "id": "header-desc",
+              "type": "p",
+              "role": "text",
+              "content": "몇 가지 질문에 답해주시면 최적의 경험을 제공해드릴게요!",
+              "className": "text-indigo-600 mt-2"
+            }
+          ]
+        }
+      ],
+      "stepIndicator": [
+        {
+          "id": "step-indicator",
+          "role": "stepIndicator",
+          "totalSteps": 2,
+          "labels": ["취향 파악", "알림 설정"]
+        }
+      ],
+      "survey": [
+        {
+          "id": "onboarding-survey",
+          "role": "surveyForm",
+          "totalSteps": 2,
+          "children": [
+            {
+              "id": "section-preference",
+              "role": "container",
+              "formStep": 0,
+              "children": [
+                {
+                  "id": "section-preference-header",
+                  "role": "container",
+                  "className": "mb-6",
+                  "children": [
+                    {
+                      "id": "section-preference-title",
+                      "type": "h2",
+                      "role": "text",
+                      "content": "Step 1. 취향 파악하기",
+                      "className": "text-lg font-semibold text-indigo-900"
+                    }
+                  ]
+                },
+                {
+                  "id": "usage-goal",
+                  "name": "usage-goal",
+                  "role": "singleChoice",
+                  "title": "주로 어떤 목적으로 사용하실 예정인가요?",
+                  "required": true,
+                  "validation": {
+                    "type": "string",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "사용 목적을 선택해주세요"
+                    }
+                  },
+                  "children": [
+                    { "id": "g1", "role": "option", "value": "personal", "label": "개인 프로젝트" },
+                    { "id": "g2", "role": "option", "value": "team", "label": "팀 협업" },
+                    { "id": "g3", "role": "option", "value": "study", "label": "학습/스터디" },
+                    { "id": "g4", "role": "option", "value": "business", "label": "비즈니스/업무" }
+                  ]
+                },
+                {
+                  "id": "preferred-features",
+                  "name": "preferred-features",
+                  "role": "multipleChoice",
+                  "title": "가장 기대되는 기능을 선택해주세요",
+                  "description": "2개 이상 5개 이하로 선택해주세요",
+                  "required": true,
+                  "validation": {
+                    "type": "array",
+                    "required": true,
+                    "minSelect": 2,
+                    "maxSelect": 5,
+                    "errorMessages": {
+                      "required": "기능을 선택해주세요",
+                      "minSelect": "최소 2개 이상 선택해주세요",
+                      "maxSelect": "최대 5개까지만 선택 가능합니다"
+                    }
+                  },
+                  "children": [
+                    { "id": "f1", "role": "option", "value": "dashboard", "label": "대시보드" },
+                    { "id": "f2", "role": "option", "value": "analytics", "label": "분석 리포트" },
+                    { "id": "f3", "role": "option", "value": "automation", "label": "자동화" },
+                    { "id": "f4", "role": "option", "value": "collaboration", "label": "실시간 협업" },
+                    { "id": "f5", "role": "option", "value": "integration", "label": "외부 연동" },
+                    { "id": "f6", "role": "option", "value": "templates", "label": "템플릿" },
+                    { "id": "f7", "role": "option", "value": "mobile", "label": "모바일 앱" }
+                  ]
+                },
+                {
+                  "id": "experience-level",
+                  "name": "experience-level",
+                  "role": "rating",
+                  "title": "유사 서비스 사용 경험은 어느 정도인가요?",
+                  "description": "1: 처음이에요 ~ 5: 전문가 수준",
+                  "required": true,
+                  "validation": {
+                    "type": "number",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "경험 수준을 선택해주세요"
+                    }
+                  },
+                  "maxRating": 5,
+                  "leftLabel": "초보",
+                  "rightLabel": "전문가"
+                }
+              ]
+            },
+            {
+              "id": "section-notification",
+              "role": "container",
+              "formStep": 1,
+              "children": [
+                {
+                  "id": "section-notification-header",
+                  "role": "container",
+                  "className": "mb-6",
+                  "children": [
+                    {
+                      "id": "section-notification-title",
+                      "type": "h2",
+                      "role": "text",
+                      "content": "Step 2. 알림 설정하기",
+                      "className": "text-lg font-semibold text-indigo-900"
+                    }
+                  ]
+                },
+                {
+                  "id": "notification-frequency",
+                  "name": "notification-frequency",
+                  "role": "singleChoice",
+                  "title": "이메일 알림은 얼마나 자주 받고 싶으세요?",
+                  "required": true,
+                  "validation": {
+                    "type": "string",
+                    "required": true,
+                    "errorMessages": {
+                      "required": "알림 빈도를 선택해주세요"
+                    }
+                  },
+                  "children": [
+                    { "id": "n1", "role": "option", "value": "realtime", "label": "실시간 알림" },
+                    { "id": "n2", "role": "option", "value": "daily", "label": "하루 1번 요약" },
+                    { "id": "n3", "role": "option", "value": "weekly", "label": "주간 요약" },
+                    { "id": "n4", "role": "option", "value": "none", "label": "알림 안 받기" }
+                  ]
+                },
+                {
+                  "id": "notification-types",
+                  "name": "notification-types",
+                  "role": "multipleChoice",
+                  "title": "어떤 알림을 받고 싶으세요?",
+                  "description": "원하는 알림 유형을 모두 선택해주세요",
+                  "children": [
+                    { "id": "t1", "role": "option", "value": "updates", "label": "서비스 업데이트" },
+                    { "id": "t2", "role": "option", "value": "tips", "label": "사용 팁 & 가이드" },
+                    { "id": "t3", "role": "option", "value": "events", "label": "이벤트 & 프로모션" },
+                    { "id": "t4", "role": "option", "value": "community", "label": "커뮤니티 소식" }
+                  ]
+                },
+                {
+                  "id": "referral",
+                  "name": "referral",
+                  "role": "singleChoice",
+                  "title": "어떻게 저희 서비스를 알게 되셨나요?",
+                  "children": [
+                    { "id": "r1", "role": "option", "value": "search", "label": "검색 (Google, Naver 등)" },
+                    { "id": "r2", "role": "option", "value": "sns", "label": "SNS (Instagram, X 등)" },
+                    { "id": "r3", "role": "option", "value": "friend", "label": "지인 추천" },
+                    { "id": "r4", "role": "option", "value": "blog", "label": "블로그/유튜브" },
+                    { "id": "r5", "role": "option", "value": "ad", "label": "광고" },
+                    { "id": "r6", "role": "option", "value": "other", "label": "기타" }
+                  ]
+                },
+                {
+                  "id": "expectations",
+                  "name": "expectations",
+                  "role": "textInput",
+                  "title": "서비스에 기대하는 점이 있다면 알려주세요",
+                  "placeholder": "자유롭게 작성해주세요 (선택)",
+                  "multiline": true,
+                  "rows": 3,
+                  "validation": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "errorMessages": {
+                      "maxLength": "300자 이하로 입력해주세요"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "button-container",
+              "role": "container",
+              "className": "flex justify-between mt-8 gap-3",
+              "children": [
+                {
+                  "id": "prev-btn",
+                  "role": "button",
+                  "label": "이전으로",
+                  "className": "secondary flex-1",
+                  "event": {
+                    "type": "onClick",
+                    "handler": "goPrevStep"
+                  }
+                },
+                {
+                  "id": "next-btn",
+                  "role": "button",
+                  "label": "다음으로",
+                  "className": "flex-1 bg-indigo-600 hover:bg-indigo-700",
+                  "event": {
+                    "type": "onClick",
+                    "handler": "goNextStep"
+                  }
+                },
+                {
+                  "id": "submit-btn",
+                  "role": "button",
+                  "label": "시작하기",
+                  "className": "flex-1 bg-indigo-600 hover:bg-indigo-700",
+                  "event": {
+                    "type": "onClick",
+                    "handler": "submit"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
