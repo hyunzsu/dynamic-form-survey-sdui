@@ -1,0 +1,221 @@
+{
+  "body": {
+    "style": {
+      "default": {
+        "base": {
+          "backgroundColor": "#f0fdfa",
+          "minHeight": "100dvh",
+          "padding": "24px"
+        }
+      }
+    },
+    "items": {
+      "header": [
+        {
+          "id": "header",
+          "role": "container",
+          "className": "mb-8",
+          "children": [
+            {
+              "id": "header-title",
+              "type": "h1",
+              "role": "text",
+              "content": "2024 Tech Conference",
+              "className": "text-2xl font-bold text-teal-900"
+            },
+            {
+              "id": "header-desc",
+              "type": "p",
+              "role": "text",
+              "content": "참가 신청서를 작성해주세요. 선착순 100명 마감!",
+              "className": "text-teal-700 mt-2"
+            }
+          ]
+        }
+      ],
+      "survey": [
+        {
+          "id": "registration-form",
+          "role": "surveyForm",
+          "children": [
+            {
+              "id": "progress",
+              "role": "progressBar",
+              "showPercentage": true,
+              "showCount": true
+            },
+            {
+              "id": "name",
+              "name": "name",
+              "role": "textInput",
+              "title": "이름",
+              "placeholder": "홍길동",
+              "required": true,
+              "validation": {
+                "type": "string",
+                "required": true,
+                "minLength": 2,
+                "maxLength": 20,
+                "errorMessages": {
+                  "required": "이름을 입력해주세요",
+                  "minLength": "이름은 2자 이상 입력해주세요",
+                  "maxLength": "이름은 20자 이하로 입력해주세요"
+                }
+              }
+            },
+            {
+              "id": "email",
+              "name": "email",
+              "role": "textInput",
+              "title": "이메일",
+              "placeholder": "example@email.com",
+              "required": true,
+              "validation": {
+                "type": "string",
+                "required": true,
+                "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                "errorMessages": {
+                  "required": "이메일을 입력해주세요",
+                  "pattern": "올바른 이메일 형식을 입력해주세요"
+                }
+              }
+            },
+            {
+              "id": "phone",
+              "name": "phone",
+              "role": "textInput",
+              "title": "연락처",
+              "placeholder": "010-1234-5678",
+              "required": true,
+              "validation": {
+                "type": "string",
+                "required": true,
+                "pattern": "^01[0-9]-?[0-9]{3,4}-?[0-9]{4}$",
+                "errorMessages": {
+                  "required": "연락처를 입력해주세요",
+                  "pattern": "올바른 연락처 형식을 입력해주세요 (예: 010-1234-5678)"
+                }
+              }
+            },
+            {
+              "id": "company",
+              "name": "company",
+              "role": "textInput",
+              "title": "소속 회사/학교",
+              "placeholder": "회사명 또는 학교명",
+              "validation": {
+                "type": "string",
+                "maxLength": 50,
+                "errorMessages": {
+                  "maxLength": "50자 이하로 입력해주세요"
+                }
+              }
+            },
+            {
+              "id": "session",
+              "name": "session",
+              "role": "singleChoice",
+              "title": "참가 희망 세션",
+              "description": "하나의 세션만 선택 가능합니다",
+              "required": true,
+              "validation": {
+                "type": "string",
+                "required": true,
+                "errorMessages": {
+                  "required": "세션을 선택해주세요"
+                }
+              },
+              "children": [
+                { "id": "s1", "role": "option", "value": "frontend", "label": "프론트엔드 트렌드 2024" },
+                { "id": "s2", "role": "option", "value": "backend", "label": "백엔드 아키텍처 심화" },
+                { "id": "s3", "role": "option", "value": "ai", "label": "AI/ML 실무 적용" },
+                { "id": "s4", "role": "option", "value": "devops", "label": "DevOps & Cloud Native" }
+              ]
+            },
+            {
+              "id": "experience",
+              "name": "experience",
+              "role": "singleChoice",
+              "title": "개발 경력",
+              "required": true,
+              "validation": {
+                "type": "string",
+                "required": true,
+                "errorMessages": {
+                  "required": "경력을 선택해주세요"
+                }
+              },
+              "children": [
+                { "id": "e1", "role": "option", "value": "student", "label": "학생/취준생" },
+                { "id": "e2", "role": "option", "value": "junior", "label": "1-3년차" },
+                { "id": "e3", "role": "option", "value": "mid", "label": "4-7년차" },
+                { "id": "e4", "role": "option", "value": "senior", "label": "8년차 이상" }
+              ]
+            },
+            {
+              "id": "interests",
+              "name": "interests",
+              "role": "multipleChoice",
+              "title": "관심 기술 분야",
+              "description": "최대 3개까지 선택 가능",
+              "validation": {
+                "type": "array",
+                "maxSelect": 3,
+                "errorMessages": {
+                  "maxSelect": "최대 3개까지만 선택 가능합니다"
+                }
+              },
+              "children": [
+                { "id": "i1", "role": "option", "value": "react", "label": "React/Next.js" },
+                { "id": "i2", "role": "option", "value": "typescript", "label": "TypeScript" },
+                { "id": "i3", "role": "option", "value": "nodejs", "label": "Node.js" },
+                { "id": "i4", "role": "option", "value": "python", "label": "Python" },
+                { "id": "i5", "role": "option", "value": "kubernetes", "label": "Kubernetes" },
+                { "id": "i6", "role": "option", "value": "ai", "label": "AI/ML" }
+              ]
+            },
+            {
+              "id": "dietary",
+              "name": "dietary",
+              "role": "singleChoice",
+              "title": "식사 관련 요청사항",
+              "description": "점심 제공 시 참고합니다",
+              "children": [
+                { "id": "d1", "role": "option", "value": "none", "label": "해당 없음" },
+                { "id": "d2", "role": "option", "value": "vegetarian", "label": "채식" },
+                { "id": "d3", "role": "option", "value": "halal", "label": "할랄" },
+                { "id": "d4", "role": "option", "value": "allergy", "label": "알레르기 있음 (비고에 작성)" }
+              ]
+            },
+            {
+              "id": "note",
+              "name": "note",
+              "role": "textInput",
+              "title": "비고",
+              "placeholder": "기타 요청사항이 있으시면 작성해주세요...",
+              "multiline": true,
+              "rows": 2,
+              "validation": {
+                "type": "string",
+                "maxLength": 200,
+                "errorMessages": {
+                  "maxLength": "200자 이하로 입력해주세요"
+                }
+              }
+            },
+            {
+              "id": "submit-btn",
+              "role": "button",
+              "label": "참가 신청하기",
+              "className": "w-full bg-teal-600 hover:bg-teal-700",
+              "event": {
+                "type": "onClick",
+                "handler": "submit"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
