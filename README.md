@@ -3,6 +3,8 @@
 JSON으로 UI를 정의하고, React 컴포넌트로 동적 렌더링하는 설문 시스템
 
 **배포 링크**: [dynamic-form-survey-sdui.vercel.app](https://dynamic-form-survey-sdui.vercel.app)
+</br>
+**문서화**: [Notion](https://hyunzsu.notion.site/Server-Driven-UI-2c7d18f1f8688086ab98c17fc40f26c6)
 
 
 ## 프로젝트 소개
